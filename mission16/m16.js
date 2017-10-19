@@ -53,10 +53,33 @@ function addBtnHandle() {
     let regcity = /^[\u4E00-\u9FA5a-zA-z]+$/;
     let regvalue = /^\d+$/;
     if(!regcity.test(aqi_city.value.trim()) || aqi_city.value.trim() === "") {
-        alert("1")
-    } else if (!regvalue.test(aqi_value.value.trim()) || aqi_value.value.trim() === "") {
-        alert("2")
-    } else {
+        if(aqi_city.parentNode.getElementsByClassName("err").length === 0){
+            let errmes = document.createTextNode("请输入正确的城市名称")
+            let span = document.createElement("span");
+            span.className = "err";
+            span.appendChild(errmes);
+            insertAfter(span, aqi_city);
+        }
+    }
+    if (!regvalue.test(aqi_value.value.trim()) || aqi_value.value.trim() === "") {
+        if(aqi_value.parentNode.getElementsByClassName("err").length === 0){
+            let errmes = document.createTextNode("请输入正确的数值")
+            let span = document.createElement("span");
+            span.className = "err";
+            span.appendChild(errmes);
+            insertAfter(span, aqi_value);
+        }
+
+    }
+    if(regcity.test(aqi_city.value.trim()) && regvalue.test(aqi_value.value.trim())){
+        if(document.getElementsByClassName("err")) {
+            let errs = document.getElementsByClassName("err"); //errs是HTMLCollection， 后面removeChild操作会使得此类数组动态变化。
+            let arr = Array.prototype.slice.call(errs);
+            let len = arr.length;
+            for(let i = 0; i < len; i ++){
+            arr[i].parentNode.removeChild(arr[i]);
+            }
+         }
         addAqiData()
         renderAqiList();
     }

@@ -1,0 +1,21 @@
+#aqi-chart-wrap {
+    margin-top: 15px;
+    display: flex;
+    align-items: flex-end;
+    height: 500px;
+
+}
+.day div{
+    border: 1px black solid;
+    width: 5px;
+}
+
+.week div{
+    border: 1px black solid;
+    width: 30px;
+}
+
+.month div{
+    border: 1px black solid;
+    width: 100px;
+}
