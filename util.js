@@ -144,7 +144,15 @@ var getObjectLength = (function() {
     };
 })(); //?为什么去了最后的括号，会导致return 后面的函数被当成字符串返回呢。
 
-
+function hasClass(element, className) {
+    var elementclasses = element.className.split(/\s+/);
+    for (var i in elementclasses) {
+        if(elementclasses[i] === className) {
+            return true;
+        }
+    }
+    return false;
+}
 
 // 为element增加一个样式名为newClassName的新样式
 function addClass(element, newClassName) {
@@ -642,3 +650,33 @@ let eventUtil = {
         }
     }
 };
+var eventTarget = function() {
+    var handlers = {};
+    return {  //
+        addHandler: function(type, handler) {
+            if(typeof handlers[type] === "undefined") {
+                handlers[type] = [];
+            }
+            handlers[type].push(handler);
+        },
+        fire: function(type) {
+            if(handlers.hasOwnProperty(type)) {
+                var arr = handlers[type];
+                for (var i = 0, len = arr.length; i < len; i ++) {
+                    arr[i](); //
+                }
+            }
+        },
+        removeHandler: function(type, handler) {
+            if(handlers[type] instanceof Array) {
+                var arr = handlers[type];
+                for(var i = 0, len = arr.length; i < len; i ++ ) {
+                    if(arr[i] === handler) {
+                        break;
+                    }
+                }
+                handlers[type].splice(i, 1);
+            }
+        }
+    }
+}

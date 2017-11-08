@@ -1,0 +1,29 @@
+div {
+    border: 1px solid black;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-wrap: wrap;
+     padding: 5px;
+     margin: 5px;
+}
+#root {
+    width: auto;
+    height: auto;
+}
+#root div {
+    width: auto;
+    height: auto;
+}
+
+.cur {
+    background: red;
+}
+
+.cur div {
+    background: white;
+}
+
+.search {
+    background: gold;
+}

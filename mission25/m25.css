@@ -1,0 +1,7 @@
+.hide ul {
+    display: none;
+}
+
+li.choose {
+    border: 1px solid red;
+}

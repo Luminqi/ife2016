@@ -20,23 +20,29 @@ let bubbleSort = () => {
     }
     return arrs;
 };
-// let quickSort1 = (arr) => {
-//     if (arr.length <= 1) {return arr;}
-//     let pivotIndex = Math.floor(arr.length / 2);
-//     let pivot = arr.splice(pivotIndex, 1)[0];
-//     let left = [];
-//     let right = [];
-//     for (var i = 0; i < arr.length; i ++) {
-//         if (arr[i] < pivot) {
-//             left.push(arr[i]);
-//         } else {
-//             right.push(arr[i]);
-//         }
-//     }
-//     arrs[index] = left.concat([pivot], right);
-//     index ++;
-//     return quickSort(left).concat([pivot], quickSort(right));
-// };
+
+
+//
+
+let quickSort1 = (arr) => {
+    if (arr.length <= 1) {return arr;}
+    let pivotIndex = Math.floor(arr.length / 2);
+    let pivot = arr.splice(pivotIndex, 1)[0];
+    console.log(pivot);
+    let left = [];
+    let right = [];
+    for (var i = 0; i < arr.length; i ++) {
+        if (arr[i] <= pivot) {
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i]);
+        }
+    }
+
+    return quickSort1(left).concat([pivot], quickSort1(right));
+};
+
+
 let sortbyQuick = () => {
     queueData = quickSort(queueData);
 };
@@ -141,8 +147,9 @@ let btnFuc = (e = window.event) => {
             renderQue3(arrs);
             break;
         case "快速排序":
-            sortbyQuick();
-            renderQue();
+            let arrs1 = quickSort1(queueData);
+            console.log(quickarr);
+            renderQue3(arrs1);
             break;
         default:
             break;
