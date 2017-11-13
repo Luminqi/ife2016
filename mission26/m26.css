@@ -1,0 +1,47 @@
+#universe {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#earth {
+    width: 150px;
+    height: 150px;
+    background: blue;
+    border-radius: 50%;
+}
+
+#wrap {
+    width: 500px;
+    margin: 10px auto;
+}
+
+.ship {
+    width: 20px;
+    height: 50px;
+    border-radius: 40%;
+    background: white;
+    position: absolute;
+    top: 225px;
+    left: 80px;
+    transform-origin: 160px 25px;
+    font:8px arial sans-serif;
+    text-align: center;
+}
+.fly {
+    animation: spin 5s infinite linear;
+}
+.stop {
+    animation-play-state: paused;
+    -webkit-animation-play-state:paused;
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
